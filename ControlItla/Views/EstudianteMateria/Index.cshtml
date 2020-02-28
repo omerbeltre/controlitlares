@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ControlItla.Models.ListaSeleccionarMateria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Seleccion de Materias</h2>
+<a href="~/EstudianteMateria/Crear" class="btn btn-success"><i class="far fa-user"> Seleccionar Materia</i></a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Estudiante
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Materia
+                </th>
+
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cell in Model)
+            {
+                <tr>
+                    <td>
+                        @cell.Estudiante.Nombre
+                    </td>
+                    <td>
+                        @cell.Estudiante.Apellido
+                    </td>
+                    <td>
+                        @cell.Asignatura.Nombre
+                    </td>
+
+                    <td>
+                        <a href="~/EstudianteMateria/Editar/@cell.Id"><i class="far fa-edit"></i></a>
+                        <a href="~/EstudianteMateria/Borrar/@cell.Id"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

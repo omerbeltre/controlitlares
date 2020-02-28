@@ -1,0 +1,38 @@
+﻿@model ControlItla.Models.ProfesorAsignatura
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+@using (Html.BeginForm())
+{
+
+    <div class="row" style="margin-left:35px">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <h3>Profesor</h3>
+                <div class="col-md-10">
+                    @Html.DropDownList("idProfesor", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.idProfesor, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h3>Materia</h3>
+                <div class="col-md-10">
+                    @Html.DropDownList("idAsignatura", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.idAsignatura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10" style="margin-left:auto">
+                    <input type="submit" value="Editar" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

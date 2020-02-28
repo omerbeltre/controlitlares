@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ControlDelItlaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asignatura">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Apellido" Type="varchar" MaxLength="30" />
+    <Property Name="Matricula" Type="varchar" MaxLength="10" />
+    <Property Name="Fecha_Nacimiento" Type="date" />
+  </EntityType>
+  <EntityType Name="EstudianteAsignatura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idEstudiante" Type="int" />
+    <Property Name="idAsignatura" Type="int" />
+  </EntityType>
+  <EntityType Name="Profesor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="30" />
+    <Property Name="Apellido" Type="varchar" MaxLength="30" />
+    <Property Name="Matricula" Type="varchar" MaxLength="10" />
+    <Property Name="Fecha_Nacimiento" Type="date" />
+  </EntityType>
+  <EntityType Name="ProfesorAsignatura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProfesor" Type="int" />
+    <Property Name="idAsignatura" Type="int" />
+  </EntityType>
+  <Association Name="FK__Estudiant__idAsi__1367E606">
+    <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="0..1" />
+    <End Role="EstudianteAsignatura" Type="Self.EstudianteAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignatura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EstudianteAsignatura">
+        <PropertyRef Name="idAsignatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Estudiant__idEst__1273C1CD">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="0..1" />
+    <End Role="EstudianteAsignatura" Type="Self.EstudianteAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EstudianteAsignatura">
+        <PropertyRef Name="idEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProfesorA__idAsi__0DAF0CB0">
+    <End Role="Asignatura" Type="Self.Asignatura" Multiplicity="0..1" />
+    <End Role="ProfesorAsignatura" Type="Self.ProfesorAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignatura">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfesorAsignatura">
+        <PropertyRef Name="idAsignatura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProfesorA__idPro__0CBAE877">
+    <End Role="Profesor" Type="Self.Profesor" Multiplicity="0..1" />
+    <End Role="ProfesorAsignatura" Type="Self.ProfesorAsignatura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProfesorAsignatura">
+        <PropertyRef Name="idProfesor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ControlDelItlaModelStoreContainer">
+    <EntitySet Name="Asignatura" EntityType="Self.Asignatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstudianteAsignatura" EntityType="Self.EstudianteAsignatura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfesorAsignatura" EntityType="Self.ProfesorAsignatura" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Estudiant__idAsi__1367E606" Association="Self.FK__Estudiant__idAsi__1367E606">
+      <End Role="Asignatura" EntitySet="Asignatura" />
+      <End Role="EstudianteAsignatura" EntitySet="EstudianteAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Estudiant__idEst__1273C1CD" Association="Self.FK__Estudiant__idEst__1273C1CD">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="EstudianteAsignatura" EntitySet="EstudianteAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProfesorA__idAsi__0DAF0CB0" Association="Self.FK__ProfesorA__idAsi__0DAF0CB0">
+      <End Role="Asignatura" EntitySet="Asignatura" />
+      <End Role="ProfesorAsignatura" EntitySet="ProfesorAsignatura" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProfesorA__idPro__0CBAE877" Association="Self.FK__ProfesorA__idPro__0CBAE877">
+      <End Role="Profesor" EntitySet="Profesor" />
+      <End Role="ProfesorAsignatura" EntitySet="ProfesorAsignatura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

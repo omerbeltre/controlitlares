@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ControlItla.Models.TableClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Profesores</h2>
+<a href="~/Profesor/Crear" class="btn btn-success"><i class="far fa-user"> Crear Profesor</i></a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Matricula
+                </th>
+                <th>
+                    Fecha de Nacimiento
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cell in Model)
+            {
+                <tr>
+                    <td>
+                        @cell.Id
+                    </td>
+                    <td>
+                        @cell.Nombre
+                    </td>
+                    <td>
+                        @cell.Apellido
+                    </td>
+                    <td>
+                        @cell.Matricula
+                    </td>
+                    <td>
+                        @cell.Fecha_de_Nacimiento
+                    </td>
+                    <td>
+                        <a href="~/Profesor/Editar/@cell.Id"><i class="far fa-edit"></i></a>
+                        <a href="~/Profesor/Borrar/@cell.Id"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

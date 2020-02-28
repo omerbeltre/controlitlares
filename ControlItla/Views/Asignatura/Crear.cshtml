@@ -1,0 +1,33 @@
+﻿@model ControlItla.Models.TableClassAsig
+
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h1>Crear Asignatura</h1>
+
+
+@using (Html.BeginForm("Crear", "Asignatura", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Nombre)
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(f => f.Nombre, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            
+
+            <div class="form-group">
+                <div class="col-md-10" style="margin-left:auto">
+                    <input type="submit" value="Crear" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

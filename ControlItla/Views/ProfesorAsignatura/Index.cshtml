@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ControlItla.Models.ListaAsignarProf>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Profesores y Materias</h2>
+<a href="~/ProfesorAsignatura/Crear" class="btn btn-success"><i class="far fa-user"> Asignar Materia a Profesor</i></a>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Profesor
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Materia
+                </th>
+
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cell in Model)
+            {
+                <tr>
+                    <td>
+                        @cell.Profesor.Nombre
+                    </td>
+                    <td>
+                        @cell.Profesor.Apellido
+                    </td>
+                    <td>
+                        @cell.Asignatura.Nombre
+                    </td>
+
+                    <td>
+                        <a href="~/ProfesorAsignatura/Editar/@cell.Id"><i class="far fa-edit"></i></a>
+                        <a href="~/ProfesorAsignatura/Borrar/@cell.Id"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,59 @@
+﻿@model ControlItla.Models.TableClass
+
+@{
+    ViewBag.Title = "Crear";
+}
+
+<h1>Crear Profesor</h1>
+
+
+@using (Html.BeginForm("Crear", "Profesor", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Nombre)
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(f => f.Nombre, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Apellido)
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(f => f.Apellido, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Matricula)
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(f => f.Matricula, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Matricula, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(f => f.Fecha_de_Nacimiento)
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(f => f.Fecha_de_Nacimiento, "", new { @class = "form-control custom" })
+                    <br />
+                    @Html.ValidationMessageFor(model => model.Fecha_de_Nacimiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10" style="margin-left:auto">
+                    <input type="submit" value="Crear" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
